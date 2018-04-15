@@ -2,14 +2,13 @@
 
 :host{
   .issue-state{
-    padding-left: 33px;
-    padding-top: 3px;
+    padding-top: 3px !important;
     svg{
       fill: $issue-open-color;
     }
   }
   .issue-details{
-    padding-left: 10px;
+    padding: 0px 10px;
   }
   .issue-link{
     text-decoration: none;
