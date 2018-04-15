@@ -1,0 +1,18 @@
+@import '../../../styles/variables';
+:host{
+  .issues-list {
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    li {
+      background-color: #fff;
+      padding: 5px 0px;
+      margin-top: -1px;
+      list-style-type: none;
+      border-top: 1px solid #e1e4e8;
+      &:hover {
+        background-color: $light-gray;
+      }
+    }
+  }
+}
