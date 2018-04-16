@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import { Issue } from '../models/issue';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map'
-import 'rxjs/add/operator/catch'
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class IssuesListService {
@@ -12,9 +13,9 @@ export class IssuesListService {
   constructor(private http: Http) { }
 
   getIssues(queryParams: Object): Observable<Issue[]> {
-    let params = "?";
+    let params = "";
     Object.keys(queryParams).map((query, index) => {
-      if (index === 0) params += `${query}=${queryParams[query]}`;
+      if (index === 0) params += `?${query}=${queryParams[query]}`;
       else params += `&${query}=${queryParams[query]}`;
     });
     return this.http.get(this.path)
@@ -27,7 +28,7 @@ export class IssuesListService {
       throw new Error('Bad response status: ' + res.status);
     }
     const body = res.json();
-    return body || {};
+    return body || [];
   }
 
   private handleError(error: any): Observable<any> {
