@@ -1,4 +1,4 @@
-[
+const ISSUESMOCK = [
     {
         "url": "https://api.github.com/repos/angular/angular.js/issues/16528",
         "repository_url": "https://api.github.com/repos/angular/angular.js",
@@ -2948,4 +2948,6 @@
         "author_association": "NONE",
         "body": "**I'm submitting a ...**\r\n<!-- (check one with \"x\") -->\r\n- [x] bug report\r\n\r\n**Current behavior:**\r\n\r\nIn our app's `run` function, `$location.search()` returns `undefined`.\r\n\r\n**Expected / new behavior:**\r\n`$location.search()` should return an object, as documented.\r\n\r\n\r\n**Minimal reproduction of the problem with instructions:**\r\n\r\nServe page at `https://localhost/foo/bar/`\r\n\r\ninclude tag `<base href=\"/baz/\">`\r\n\r\nUse HTML5 location mode.\r\n\r\nsee http://plnkr.co/edit/RRJMNjo6Viw1NbtNeWfr?p=preview\r\n\r\n**AngularJS version:** 1.5.10\r\n\r\n**Browser:** Chrome 61 | Firefox 57\r\n\r\n**Anything else:**\r\n\r\nOh, this may be a duplicate of #11223. That issue got sidetracked to a discussion of case-sensitivity and then marked as wontfix, but I think that was a tangent unrelated to making search() return properly.\r\n\r\nIn a way much like #14488 noted for $location.$$absUrl, the $location.$$search property may not be initialized before $location.search() is called.\r\n\r\nPerhaps the search() method needs to check to see if $$search is undefined, similar to how other functions check for a value for $$path or $$hash, or perhaps when $locationProvider.$get needs to *always* call $location.$$parse (which $location.$$parseLinkUrl declines to do in this condition).\r\n\r\nI also noticed that sometime *later* $location.search() would return properly; I suspect this is related to how $locationProvider.$get adds a watch to $rootScope, but the app's run function probably happens before that digest cycle."
     }
-]
+];
+
+export default ISSUESMOCK;

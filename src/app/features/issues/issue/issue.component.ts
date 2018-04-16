@@ -15,7 +15,7 @@ export class IssueComponent implements OnInit {
   ngOnInit() {
   }
 
-  getLabelStylings(color:string): Object {
+  getLabelStylings(color:string): {'background-color': string; 'color': string} {
     const textColor = parseInt(color, 16) > Number.parseInt('ffffff', 16)/10 ? '000': 'fff';
     return {'background-color': `#${color}`, 'color':`#${textColor}`};
   }
